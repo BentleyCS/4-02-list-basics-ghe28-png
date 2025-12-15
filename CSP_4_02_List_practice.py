@@ -1,5 +1,12 @@
 
 def bookends(li: list):
+    listA=[]
+    listA.append(li[0])
+    listA.append(li[len(li)-1])
+
+    li.pop(0)
+    li.pop(len(li)-1)
+    return listA
     """
     Given a list of numbers remove the first and last elements from the list and
     return a new list of those two elements.
@@ -13,15 +20,26 @@ def bookends(li: list):
 
 
 def inOrder(li : list):
+    y=True
+    for i in range(1,len(li)-1,1):
+        if li[i]>li[i+1]:
+            y=False
+            return y
+    return y
+
     """
     Given a list of numbers return true if the list is in ascending order.
     :param list:
-    :return:
+    :return
     """
 
 
 
 def find(li: list, target : int):
+    for i in range(0,len(li),1):
+        if li[i]==target:
+            return i
+    return -1
     """
     Given a list of numbers and a target value return the index location of the
     target value within the list.
@@ -41,16 +59,31 @@ def find(li: list, target : int):
 
 
 def removeLowest(li):
-    """
-    Given a list of numbers remove the lowest element from the list. You may assume the list is at least 1 element long.
-    If there are multiple of the lowest number you just need to remove 1.
-    Example list [3,6,7,2,12] would become [3,6,7,12]
-    :param list:
-    :return:
-    """
+    lowest=li[0]
+    index=0
+    for i in range(0,len(li)):
+        if lowest>li[i]:
+            lowest=li[i]
+            index=i
+    li.pop(index)
+    return li
+    #     """
+    # Given a list of numbers remove the lowest element from the list. You may assume the list is at least 1 element long.
+    # If there are multiple of the lowest number you just need to remove 1.
+    # Example list [3,6,7,2,12] would become [3,6,7,12]
+    # :param list:
+    # :return:
+    # """
 
 
 def keepOrder(li: list, value):
+
+    for i in range(0,len(li),1):
+        if(value<=li[i]):
+            li.insert(i,value)
+            return li
+    li.append(value)
+    return(li)
     """
     Given a list of numbers that is in order and a value. Place the value into the
     list such that the list is still in order.
@@ -62,12 +95,24 @@ def keepOrder(li: list, value):
 
 
 def merge(l1:list, l2:list):
-    """
-    Given two lists that are in order. produce a new list that is the two lists merged together and in order.
-    Make sure to now modify either of the original lists.
-    Example l1 = [1,3,5] l2 = [2,4,6,8] -> [1,2,3,4,5,6,8]
-    :param l1:
-    :param l2:
-    :return:
-    """
+        result = l1.copy()
+        for j in range(len(l2)):
+            inserted = False
+            for i in range(len(result)):
+                if l2[j] <= result[i]:
+                    result.insert(i, l2[j])
+                    inserted = True
+                    break
+            if not inserted:
+                result.append(l2[j])
+        return result
+    #
+    # """
+    # Given two lists that are in order. produce a new list that is the two lists merged together and in order.
+    # Make sure to now modify either of the original lists.
+    # Example l1 = [1,3,5] l2 = [2,4,6,8] -> [1,2,3,4,5,6,8]
+    # :param l1:
+    # :param l2:
+    # :return:
+    # """
     
