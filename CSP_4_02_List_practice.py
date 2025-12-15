@@ -95,14 +95,14 @@ def keepOrder(li: list, value):
 
 
 def merge(l1:list, l2:list):
-        result = l1.copy()
+        result=l1.copy()
         for j in range(len(l2)):
-            inserted = False
+            inserted=False
             for i in range(len(result)):
-                if l2[j] <= result[i]:
-                    result.insert(i, l2[j])
-                    inserted = True
-                    break
+                    if l2[j]<=result[i]:
+                        result.insert(i,l2[j])
+                        inserted=True
+                        break
             if not inserted:
                 result.append(l2[j])
         return result
